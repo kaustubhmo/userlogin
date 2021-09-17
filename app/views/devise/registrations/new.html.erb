@@ -1,0 +1,88 @@
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= render "devise/shared/error_messages", resource: resource %>
+<section class="vh-100 bg-image" style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.jpg');">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+
+              
+                <div class="row">
+                  <div class="col-md-6 mb-4 pb-2">
+                    <div class="form-outline">
+                      <%= f.text_field :firstname, autofocus: true, placeholder: "First Name", class:"form-control form-control-lg" %>                                        
+                    </div>
+                  </div>
+
+                
+                  <div class="col-md-6 mb-4 pb-2">
+                    <div class="form-outline">
+                      <%= f.text_field :lastname, autofocus: true, placeholder: "Last Name", class:"form-control form-control-lg" %>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <%= f.text_field :address, autofocus: true, placeholder: "Address", class:"form-control form-control-lg" %>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <%= f.number_field :contatno, autofocus: true, placeholder: "Contact No", class:"form-control form-control-lg" %>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <%= f.email_field :email, autofocus: true, placeholder: "Email Id", class:"form-control form-control-lg" %>
+                </div>              
+
+
+                <% if @minimum_password_length %>
+                  <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <% end %><br />
+                <div class="row">
+                  <div class="col-md-6 mb-4 pb-2">
+                    <div class="form-outline">
+                      <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password", class:"form-control form-control-lg" %>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4 pb-2">
+                    <div class="form-outline mb-4">                  
+                      <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm-Password", class:"form-control form-control-lg" %>
+                    </div>
+                  </div>
+                </div>
+
+               
+
+                <div class="form-check d-flex justify-content-center mb-5">
+                  <input
+                    class="form-check-input me-2"
+                    type="checkbox"
+                    value=""
+                    id="form2Example3cg"
+                  />
+                  <label class="form-check-label" for="form2Example3g">
+                    I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
+                  </label>
+                </div>
+
+                <div class="d-flex justify-content-center">
+                  <%= f.submit "Sign up", class: "btn btn-success btn-block btn-lg gradient-custom-4 text-body" %>                  
+                </div>
+
+                <p class="text-center text-muted mt-5 mb-0">Have already an account?<%= link_to "Log in", new_session_path(resource_name), class: "link-info" %></p>
+
+                
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<% end %>
+
+

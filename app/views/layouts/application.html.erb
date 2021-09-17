@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Userdemo</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+   
+    <div class="container">
+      <% if user_signed_in? %>
+        <%= render "layouts/header" %>
+      <% end %>
+      <% if notice.present? || alert.present? %>
+      <div class="alert alert-success" role="alert">
+        <%= notice %>
+        <%= alert %>
+      </div>
+      <% end %>
+
+      <%= yield %>
+
+      <% if user_signed_in? %>
+        <%= render "layouts/footer" %>
+      <% end %>
+    </div>  
+  </body>
+</html>
