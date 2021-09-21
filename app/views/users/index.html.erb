@@ -1,10 +1,7 @@
 <div class="float-end mt-4 mb-4">
   <%= form_tag import_users_path, multipart: true, class: 'row g-3 needs-validation' do %> 
     <div class="col-auto">
-      <%= file_field_tag :file, class: 'form-control', required: "required" %> 
-      <div class="invalid-feedback">
-        Please select File.
-      </div>
+      <%= file_field_tag :my_csv_file, class: 'form-control', required: "required", accept: ".csv" %>       
     </div>
     <div class="col-auto">
       <%= submit_tag "Import CSV", class: 'btn btn-info' %>
@@ -13,11 +10,14 @@
   <% end %>
 </div>
 
+
+
 <table class="table mt-4 pt-2">
   <thead class="table-dark">
     <tr>
         <td>First Name<td>
         <td>Last Name<td>
+        <td>Role<td>
         <td>Email<td>
         <td>Contact no<td>
         <td>Address<td>
@@ -29,10 +29,9 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-          <td>
-            <%= user.firstname %>
-          <td>
+          <td><%=user.firstname%><td>
           <td><%=user.lastname%><td>
+          <td><%=user.role.upcase%><td>
           <td><%=user.email%><td>
           <td><%=user.contatno%><td>
           <td><%=user.address%><td>
@@ -43,6 +42,8 @@
   </tbody>  
 </table>
 
+<!-- Pagination code -->
+<%== pagy_bootstrap_nav(@pagy) %>
 
 
 

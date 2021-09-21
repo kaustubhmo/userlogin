@@ -1,16 +1,19 @@
 require 'csv'
-
 class User < ApplicationRecord
-  
   include GenerateCsv
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  validates :firstname, :lastname, presence: true
+
+  # Add user's role enum
   enum role: { admin: "admin", manager: "manager", user: "user"}
+  # Add Default role value
+  attribute :role, :string, default: "user"
 
-
+  # Add csv file informatin into database
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
       users_hash = row.to_hash      

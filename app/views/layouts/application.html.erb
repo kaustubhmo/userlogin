@@ -16,11 +16,13 @@
       <% if user_signed_in? %>
         <%= render "layouts/header" %>
       <% end %>
-      <% if notice.present? || alert.present? %>
-      <div class="alert alert-success" role="alert">
-        <%= notice %>
-        <%= alert %>
-      </div>
+      
+      <% if notice.present? %>
+        <div class="alert alert-success" role="alert"><%= notice %></div>
+      <% end %>
+
+      <% if alert.present? %>
+        <div class="alert alert-warning" role="alert"><%= alert %></div>
       <% end %>
 
       <%= yield %>
