@@ -37,11 +37,9 @@
                   <%= f.email_field :email, autofocus: true, placeholder: "Email Id", class:"form-control form-control-sm" %>
                 </div>
 
-                <% if current_user.admin? %>
-                <!--<div class="mb-4">
-                  <%#= f.select :role, ["admin" , "manager", "user"], {},class:"form-select form-select-sm mb-3" %>
-                </div>-->
-                <% end %>
+                <div class="form-outline mb-4">
+                  <strong>Role: <%=current_user.role.upcase %></strong>
+                </div>
 
                 <% if @minimum_password_length %>
                   <em>(<%= @minimum_password_length %> characters minimum)</em>

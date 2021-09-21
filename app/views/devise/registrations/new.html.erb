@@ -68,8 +68,13 @@
                   </label>
                 </div>
 
+                
+
                 <div class="d-flex justify-content-center">
                   <%= f.submit "Sign up", class: "btn btn-success btn-block btn-lg gradient-custom-4 text-body" %>                  
+                  <% if User.count == 0 %>
+                    <%= f.hidden_field :role, value: "admin"%>
+                  <% end %>
                 </div>
 
                 <p class="text-center text-muted mt-5 mb-0">Have already an account?<%= link_to "Log in", new_session_path(resource_name), class: "link-info" %></p>

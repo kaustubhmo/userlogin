@@ -44,10 +44,10 @@
                 </div>
                 
                 <div class="mb-4">
-                  <% if  user.id == 1 || (current_user.admin? && user.id != current_user.id) %>
+                  <% if current_user.admin? && !user.admin? %>
                     <%= f.select :role, User.roles, {},class:"form-select form-select-sm mb-3" %>
                   <% else %>
-                  <strong>Role: <%=user.role %></strong>
+                  <strong>Role: <%=user.role.upcase %></strong>
                   <% end %>
                 </div>
 
