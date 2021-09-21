@@ -6,7 +6,7 @@ module GenerateCsv
       def generate_csv(fields)
         CSV.generate(headers: true) do |csv|
           # Header
-          csv << fields  
+          csv << fields
           # Body
           all.each do |record|
             csv << record.attributes.values_at(*fields)
