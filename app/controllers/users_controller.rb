@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
+        produce_message # kafka code for produce code
         format.html { redirect_to users_url , notice: "User was successfully updated." }
         format.json { render :show, status: :ok, location: @user }
       else
@@ -78,6 +79,11 @@ class UsersController < ApplicationController
 
     def csv_attr
       ['email','firstname', 'lastname', 'address', 'role']
+    end
+
+
+    def produce_message
+        $kafka_producer.produce(@user.to_json, topic: "user_update", partition_key: @user.id)
     end
 end
 

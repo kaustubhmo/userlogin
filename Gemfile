@@ -33,6 +33,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'devise'
 gem 'pagy' # Use for pagination
 gem 'csv_validator' #validate csv file
+gem 'ruby-kafka' # add kafka gem
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
